@@ -51,19 +51,19 @@ def rgb():
     std_a = std_ta / std_sa
     std_b = std_tb / std_sb
 
-    res_lab = np.zeros((x_s, y_s, z_s), 'float64')
+    res_img = np.zeros((x_s, y_s, z_s), 'float64')
 
     for i in range(x_s):
         for j in range(y_s):
-            res_lab[i][j][0] = mean_tl + std_l * (source_img[i][j][0] - mean_sl)
-            res_lab[i][j][1] = mean_ta + std_a * (source_img[i][j][1] - mean_sa)
-            res_lab[i][j][2] = mean_tb + std_b * (source_img[i][j][2] - mean_sb)
+            res_img[i][j][0] = mean_tl + std_l * (source_img[i][j][0] - mean_sl)
+            res_img[i][j][1] = mean_ta + std_a * (source_img[i][j][1] - mean_sa)
+            res_img[i][j][2] = mean_tb + std_b * (source_img[i][j][2] - mean_sb)
 
-    res_lab[:, :, 0] = np.clip(res_lab[:, :, 0], 0, 1)
-    res_lab[:, :, 1] = np.clip(res_lab[:, :, 1], 0, 1)
-    res_lab[:, :, 2] = np.clip(res_lab[:, :, 2], 0, 1)
+    res_img[:, :, 0] = np.clip(res_img[:, :, 0], 0, 1)
+    res_img[:, :, 1] = np.clip(res_img[:, :, 1], 0, 1)
+    res_img[:, :, 2] = np.clip(res_img[:, :, 2], 0, 1)
 
-    plt.imshow(res_lab)
+    plt.imshow(res_img)
     plt.show()
 
 rgb()

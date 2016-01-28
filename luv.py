@@ -6,15 +6,10 @@ import math as m
 
 def luv():
     source_img = cv2.imread('img1.png')
-
     target_img = cv2.imread('img2.png')
-
     source_img = cv2.cvtColor(source_img, cv2.COLOR_BGR2RGB)
-
     target_img = cv2.cvtColor(target_img, cv2.COLOR_BGR2RGB)
-
     source_img = cv2.cvtColor(source_img, cv2.COLOR_RGB2LUV)
-
     target_img = cv2.cvtColor(target_img, cv2.COLOR_RGB2LUV)
 
     # make sure the channel value will be float format
@@ -64,13 +59,13 @@ def luv():
             res_lab[i][j][1] = mean_ta + std_a * (source_img[i][j][1] - mean_sa)
             res_lab[i][j][2] = mean_tb + std_b * (source_img[i][j][2] - mean_sb)
 
-    lab_img = cv2.cvtColor(res_lab, cv2.COLOR_XYZ2RGB)
+    res_img = cv2.cvtColor(res_lab, cv2.COLOR_XYZ2RGB)
 
-    lab_img[:, :, 0] = np.clip(res_lab[:, :, 0], 0, 1)
-    lab_img[:, :, 1] = np.clip(res_lab[:, :, 1], 0, 1)
-    lab_img[:, :, 2] = np.clip(res_lab[:, :, 2], 0, 1)
+    res_img[:, :, 0] = np.clip(res_lab[:, :, 0], 0, 1)
+    res_img[:, :, 1] = np.clip(res_lab[:, :, 1], 0, 1)
+    res_img[:, :, 2] = np.clip(res_lab[:, :, 2], 0, 1)
 
-    plt.imshow(lab_img)
+    plt.imshow(res_img)
     plt.show()
 
 luv()
